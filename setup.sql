@@ -132,8 +132,8 @@ LOCK TABLES `page_details` WRITE;
 
 INSERT INTO `page_details` (`detail_id`, `name`, `content_mark_down`, `content_partitions`)
 VALUES
-  ('DE_CkjDZDxrGjIdJ','Traveling through the market','While traveling through the crowd, you are greeted by several merchants, declaring their wares and cheerfully encouraging the crowd to approach.  One stall stands out at the edge of the market, a wagon draped in colorful torn flags, rags, and cloths with a sign above the door, reading {“Lady Negosha’s Fortune and Folly”}(TG_1112223334445).  As you approach, an old bent-over lady beckons you inside, “Come: let me tell you of your fate.”','[{\"type\":\"text\",\"text\":\"While traveling through the crowd, you are greeted by several merchants, declaring their wares and cheerfully encouraging the crowd to approach.  One stall stands out at the edge of the market, a wagon draped in colorful torn flags, rags, and cloths with a sign above the door, reading \"},{\"type\":\"tag\",\"text\":\"“Lady Negosha’s Fortune and Folly”\",\"id\":\"TG_1112223334445\",\"tag\":{\"id\":\"SA_ZnDpXGyqslbok\"}},{\"type\":\"text\",\"text\":\".  As you approach, an old bent-over lady beckons you inside, “Come: let me tell you of your fate.”\"}]'),
-  ('DE_YMmHPX9cYlZLc','Read first','You’ve been invited to participate in Lord Tayspire’s festival at Fellpines!  Rumor has spread that the wealthy Lord is sinking a small fortune into the party and any and all are invited to attend.  Although you are keen to start your adventuring, you decide to take this opportunity to rest and enjoy the festivities.  You may even be able to find some exotic equipment or seek out a traveling noble or merchant in need of some mercenary work.Upon entering the town of Fellpines, a small and presumably typically quite town now filled with hustle, laughter, and foreign travelers.  Merchants with caravans and small unfolded shops are bunched together against the street’s edge, and a crowd of people all crammed together wander with the flow of troubled water from one stall to the next.','[{\"type\":\"text\",\"text\":\"You’ve been invited to participate in Lord Tayspire’s festival at Fellpines!  Rumor has spread that the wealthy Lord is sinking a small fortune into the party and any and all are invited to attend.  Although you are keen to start your adventuring, you decide to take this opportunity to rest and enjoy the festivities.  You may even be able to find some exotic equipment or seek out a traveling noble or merchant in need of some mercenary work.Upon entering the town of Fellpines, a small and presumably typically quite town now filled with hustle, laughter, and foreign travelers.  Merchants with caravans and small unfolded shops are bunched together against the street’s edge, and a crowd of people all crammed together wander with the flow of troubled water from one stall to the next.\"}]');
+  ('DE_CkjDZDxrGjIdJ','Traveling through the market','While traveling through the crowd, you are greeted by several merchants, declaring their wares and cheerfully encouraging the crowd to approach.  One stall stands out at the edge of the market, a wagon draped in colorful torn flags, rags, and cloths with a sign above the door, reading {\"Lady Negosha\'s Fortune and Folly\"}(TG_1112223334445).  As you approach, an old bent-over lady beckons you inside, \"Come: let me tell you of your fate.\"','[{\"type\":\"text\",\"text\":\"While traveling through the crowd, you are greeted by several merchants, declaring their wares and cheerfully encouraging the crowd to approach.  One stall stands out at the edge of the market, a wagon draped in colorful torn flags, rags, and cloths with a sign above the door, reading \"},{\"type\":\"tag\",\"text\":\"\\"Lady Negosha\'s Fortune and Folly\\"\",\"id\":\"TG_1112223334445\",\"tag\":{\"id\":\"SA_ZnDpXGyqslbok\"}},{\"type\":\"text\",\"text\":\".  As you approach, an old bent-over lady beckons you inside, \\"Come: let me tell you of your fate.\\"\"}]'),
+  ('DE_YMmHPX9cYlZLc','Read first','You\'ve been invited to participate in Lord Tayspire\'s festival at Fellpines!  Rumor has spread that the wealthy Lord is sinking a small fortune into the party and any and all are invited to attend.  Although you are keen to start your adventuring, you decide to take this opportunity to rest and enjoy the festivities.  You may even be able to find some exotic equipment or seek out a traveling noble or merchant in need of some mercenary work.Upon entering the town of Fellpines, a small and presumably typically quite town now filled with hustle, laughter, and foreign travelers.  Merchants with caravans and small unfolded shops are bunched together against the street\'s edge, and a crowd of people all crammed together wander with the flow of troubled water from one stall to the next.','[{\"type\":\"text\",\"text\":\"You\'ve been invited to participate in Lord Tayspire\'s festival at Fellpines!  Rumor has spread that the wealthy Lord is sinking a small fortune into the party and any and all are invited to attend.  Although you are keen to start your adventuring, you decide to take this opportunity to rest and enjoy the festivities.  You may even be able to find some exotic equipment or seek out a traveling noble or merchant in need of some mercenary work.Upon entering the town of Fellpines, a small and presumably typically quite town now filled with hustle, laughter, and foreign travelers.  Merchants with caravans and small unfolded shops are bunched together against the street\'s edge, and a crowd of people all crammed together wander with the flow of troubled water from one stall to the next.\"}]');
 
 /*!40000 ALTER TABLE `page_details` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -171,6 +171,7 @@ CREATE TABLE `page_id_bind` (
   `bound_id` char(16) NOT NULL DEFAULT '',
   `type` varchar(140) NOT NULL DEFAULT '',
   `order` int(1) DEFAULT '0',
+  `disabled` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`page_id`,`bound_id`),
   KEY `order` (`order`),
   KEY `type` (`type`)
@@ -179,15 +180,15 @@ CREATE TABLE `page_id_bind` (
 LOCK TABLES `page_id_bind` WRITE;
 /*!40000 ALTER TABLE `page_id_bind` DISABLE KEYS */;
 
-INSERT INTO `page_id_bind` (`page_id`, `bound_id`, `type`, `order`)
+INSERT INTO `page_id_bind` (`page_id`, `bound_id`, `type`, `order`, `disabled`)
 VALUES
-  ('CA_2MLJEe0YuQrLt','QU_oec7Hlff7nfVW','QU',0),
-  ('QU_oec7Hlff7nfVW','SA_rBGQ4fh7hkXvd','SA',0),
-  ('QU_oec7Hlff7nfVW','SA_ZnDpXGyqslbok','SA',1),
-  ('RR_1234567890123','CA_2MLJEe0YuQrLt','CA',0),
-  ('SA_rBGQ4fh7hkXvd','DE_CkjDZDxrGjIdJ','DE',0),
-  ('SA_rBGQ4fh7hkXvd','DE_YMmHPX9cYlZLc','DE',1),
-  ('SA_rBGQ4fh7hkXvd','IM_uSa6Ym7zT0Zpu','IM',0);
+  ('CA_2MLJEe0YuQrLt','QU_oec7Hlff7nfVW','QU',0,0),
+  ('QU_oec7Hlff7nfVW','SA_rBGQ4fh7hkXvd','SA',0,0),
+  ('QU_oec7Hlff7nfVW','SA_ZnDpXGyqslbok','SA',1,0),
+  ('RR_1234567890123','CA_2MLJEe0YuQrLt','CA',0,0),
+  ('SA_rBGQ4fh7hkXvd','DE_CkjDZDxrGjIdJ','DE',0,0),
+  ('SA_rBGQ4fh7hkXvd','DE_YMmHPX9cYlZLc','DE',1,0),
+  ('SA_rBGQ4fh7hkXvd','IM_uSa6Ym7zT0Zpu','IM',0,0);
 
 /*!40000 ALTER TABLE `page_id_bind` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -213,7 +214,7 @@ LOCK TABLES `page_images` WRITE;
 
 INSERT INTO `page_images` (`image_id`, `name`, `caption`, `link`, `thumbnail_link`, `source`)
 VALUES
-  ('IM_uSa6Ym7zT0Zpu','The marketplace','The market is filled with sounds, and sights, and smells.  A sweet aroma of fresh pears lingers in the air, but it is pressed against a sensory overload of a streets filled with exotic food, wares, and people.','DrY8owsZ9L6OQy6G.jpg','IQEwcbzXdxXcmbWr.jpg','http://freeforcommercialuse.net/portfolio/fresh-bio-crop-pear/');
+  ('IM_uSa6Ym7zT0Zpu','The marketplace','The market is filled with sounds, and sights, and smells.  A sweet aroma of fresh pears lingers in the air, but it is pressed against a sensory overload of a street filled with exotic food, wares, and people.','DrY8owsZ9L6OQy6G.jpg','IQEwcbzXdxXcmbWr.jpg','http://freeforcommercialuse.net/portfolio/fresh-bio-crop-pear/');
 
 /*!40000 ALTER TABLE `page_images` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -285,9 +286,9 @@ LOCK TABLES `page_summary` WRITE;
 
 INSERT INTO `page_summary` (`page_id`, `type`, `name`, `text`, `properties`)
 VALUES
-  ('CA_2MLJEe0YuQrLt','CA','Prophecy of the bloodmoon god','Traveling to a festival, your party’s destiny is sealed by the prophecy of a fortune teller.  She speaks of a blood stone, four maidens, and a ritual of death and immortality.  Can you stop the red demon before he becomes the bloodmoon god?','[{\"key\":\"Length\",\"value\":\"6-10 3-hour sessions\"},{\"key\":\"Starting level\",\"value\":\"1\"},{\"key\":\"Expected ending level\",\"value\":\"4\"},{\"key\":\"Expected number of players\",\"value\":\"3-6\"}]'),
-  ('QU_oec7Hlff7nfVW','QU','Starting point','Your adventure should begin with this quest.  Start with the story-arc: Introduction.','[]'),
-  ('SA_rBGQ4fh7hkXvd','SA','Introduction','This is where you should start the campaign.  Read through the details for more information.','[]'),
+  ('CA_2MLJEe0YuQrLt','CA','Prophecy of the bloodmoon god','Traveling to a festival, your party\'s destiny is sealed by the prophecy of a fortune teller.  She speaks of a blood stone, four maidens, and a ritual of death and immortality.  Can you stop the red demon before he becomes the bloodmoon god?','[{\"key\":\"Length\",\"value\":\"6-10 3-hour sessions\"},{\"key\":\"Starting level\",\"value\":\"1\"},{\"key\":\"Expected ending level\",\"value\":\"4\"},{\"key\":\"Expected number of players\",\"value\":\"3-6\"}]'),
+  ('QU_oec7Hlff7nfVW','QU','Starting point','Your adventure should begin with this quest.  Start with the story-arc: Introduction.','[]'),
+  ('SA_rBGQ4fh7hkXvd','SA','Introduction','This is where you should start the campaign.  Read through the details for more information.','[]'),
   ('SA_ZnDpXGyqslbok','SA','Lady Negosha\'s fortune',NULL,NULL);
 
 /*!40000 ALTER TABLE `page_summary` ENABLE KEYS */;
