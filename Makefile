@@ -8,7 +8,7 @@ SET_NODE_ENV=dev
 
 IMG=sr_creation/$(IMG_NAME)
 CONTAINER=$(IMG_NAME)
-RUNOPTS=-p $(PORT):3306
+RUNOPTS=-p $(PORT):$(PORT)
 VOLUME_DESTINATION=/home/default
 
 build:
