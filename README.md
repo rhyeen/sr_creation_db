@@ -1,8 +1,9 @@
-# Pre-requisites
+# Shardrealms Creation - Database
+## Pre-requisites
 
 You must have Docker installed to run this database instance. Check the official [Docker Installation Guide](https://docs.docker.com/engine/installation/) if it isn't installed on your machine.
 
-# Running container
+## Running container
 
 To start or stop the database, build the sr-database image and run it:
 
@@ -16,7 +17,7 @@ You should be aware that if you remove the docker container, any data added to t
 
 If you alter setup.sql, make sure to `make build` again to copy those changes into the docker image.  Make sure to test your changes before `make build`, otherwise `make run-dev` will not be able to run the MySQL instance and it will kill the container.
 
-# Accessing the database
+## Accessing the database
 
 You should now have a database reachable at localhost:3306.
 
@@ -26,6 +27,6 @@ You should now have a database reachable at localhost:3306.
 
 This is automatically configured in the Node.js app.  I recommend also configuring it in a MySQL management application for ease of debugging.  I recommend [Sequel Pro](https://www.sequelpro.com/) if you have a Mac, or [Workbench](https://www.mysql.com/products/workbench/) otherwise.
 
-# Notes
+## Notes
 
 This repo is based off of [https://github.com/dwmkerr/node-docker-microservice](https://github.com/dwmkerr/node-docker-microservice).  You can read more about it here: [http://www.dwmkerr.com/learn-docker-by-building-a-microservice/](http://www.dwmkerr.com/learn-docker-by-building-a-microservice/)
