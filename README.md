@@ -1,8 +1,8 @@
 # Pre-requisites
 
-You must have Docker installed to run this database instance. Check the [Installation Guide](https://docs.docker.com/engine/installation/) if you haven't got it installed.
+You must have Docker installed to run this database instance. Check the official [Docker Installation Guide](https://docs.docker.com/engine/installation/) if it isn't installed on your machine.
 
-# Coding
+# Running container
 
 To start or stop the database, build the sr-database image and run it:
 
@@ -11,6 +11,12 @@ make build
 make run-dev
 ```
 Allow up to 2 minutes for mysql to start up after `run-dev` before testing the connection.
+
+You should now have a database reachable at localhost:3306.
+
+* Username: "sr_creation_dev",
+* Database: "sr_creation_dev",
+* Password: "password"
 
 You should be aware that if you remove the docker container, any data added to the database beyond what is in setup.sql will be wiped.  This is intentional so that you can quickly revert to a clean slate whenever you desire.
 
