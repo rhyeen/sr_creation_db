@@ -12,15 +12,19 @@ make run-dev
 ```
 Allow up to 2 minutes for mysql to start up after `run-dev` before testing the connection.
 
+You should be aware that if you remove the docker container, any data added to the database beyond what is in setup.sql will be wiped.  This is intentional so that you can quickly revert to a clean slate whenever you desire.
+
+If you alter setup.sql, make sure to `make build` again to copy those changes into the docker image.  Make sure to test your changes before `make build`, otherwise `make run-dev` will not be able to run the MySQL instance and it will kill the container.
+
+# Accessing the database
+
 You should now have a database reachable at localhost:3306.
 
 * Username: "sr_creation_dev",
 * Database: "sr_creation_dev",
 * Password: "password"
 
-You should be aware that if you remove the docker container, any data added to the database beyond what is in setup.sql will be wiped.  This is intentional so that you can quickly revert to a clean slate whenever you desire.
-
-If you alter setup.sql, make sure to `make build` again to copy those changes into the docker image.  Make sure to test your changes before `make build`, otherwise `make run-dev` will not be able to run the MySQL instance and it will kill the container.
+This is automatically configured in the Node.js app.  I recommend also configuring it in a MySQL management application for ease of debugging.  I recommend [Sequel Pro](https://www.sequelpro.com/) if you have a Mac, or [Workbench](https://www.mysql.com/products/workbench/) otherwise.
 
 # Notes
 
