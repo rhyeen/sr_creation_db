@@ -1,3 +1,25 @@
+# ************************************************************
+# Sequel Pro SQL dump
+# Version 4541
+#
+# http://www.sequelpro.com/
+# https://github.com/sequelpro/sequelpro
+#
+# Host: 127.0.0.1 (MySQL 5.7.18)
+# Database: sr_creation_dev
+# Generation Time: 2017-06-17 22:01:30 +0000
+# ************************************************************
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
 # Dump of table healthcheck
 # ------------------------------------------------------------
 
@@ -48,9 +70,11 @@ VALUES
   ('AS_oHXxgJw5tv7Ce','US_1234567890123',1,1,1,1,0),
   ('CA_2MLJEe0YuQrLt','US_1234567890123',1,1,1,1,0),
   ('CH_Rr4So7SlAXSWm','US_1234567890123',1,1,1,1,0),
+  ('CT_1zFVNLfc2SQz5','US_1234567890123',1,1,1,1,0),
   ('DI_FOTZYQnlJYk7a','US_1234567890123',1,1,1,1,0),
   ('EA_sKR7yxcVOrKw9','US_1234567890123',1,1,1,1,0),
   ('GR_XvIixhu8sHoTc','US_1234567890123',1,1,1,1,0),
+  ('IT_EYFMYY3gPgkSI','US_1234567890123',1,1,1,1,0),
   ('LM_1m8oSmsEe67gc','US_1234567890123',1,1,1,1,0),
   ('LM_DcFCWmQs3IUKG','US_1234567890123',1,1,1,1,0),
   ('LM_hnNqV1pP6fNVe','US_1234567890123',1,1,1,1,0),
@@ -111,12 +135,16 @@ VALUES
   ('CA_2MLJEe0YuQrLt','IM',NULL,1),
   ('CH_Rr4So7SlAXSWm','DE',NULL,0),
   ('CH_Rr4So7SlAXSWm','IM',NULL,0),
+  ('CT_1zFVNLfc2SQz5','DE',NULL,0),
+  ('CT_1zFVNLfc2SQz5','IM',NULL,0),
   ('DI_FOTZYQnlJYk7a','DE',NULL,0),
   ('DI_FOTZYQnlJYk7a','IM',NULL,1),
   ('EA_sKR7yxcVOrKw9','DE',NULL,0),
   ('EA_sKR7yxcVOrKw9','IM',NULL,1),
   ('GR_XvIixhu8sHoTc','DE',NULL,0),
   ('GR_XvIixhu8sHoTc','IM',NULL,1),
+  ('IT_EYFMYY3gPgkSI','DE',NULL,0),
+  ('IT_EYFMYY3gPgkSI','IM',NULL,0),
   ('LM_1m8oSmsEe67gc','DE',NULL,0),
   ('LM_1m8oSmsEe67gc','IM',NULL,0),
   ('LM_DcFCWmQs3IUKG','DE',NULL,0),
@@ -199,7 +227,7 @@ LOCK TABLES `page_defaults` WRITE;
 INSERT INTO `page_defaults` (`type`, `default_config`)
 VALUES
   ('AS','{\n  \"page_type\": \"AS\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": true\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"CH\"\n    }\n  ]\n}'),
-  ('CA','{\n  \"page_type\": \"CA\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": true\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"QU\"\n    },\n    {\n      \"type\": \"GR\"\n    },\n    {\n      \"type\": \"EA\"\n    },\n    {\n      \"type\": \"WD\"\n    },\n    {\n      \"type\": \"TX\"\n    }\n  ]\n}\n'),
+  ('CA','{\n  \"page_type\": \"CA\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": true\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"QU\"\n    },\n    {\n      \"type\": \"GR\"\n    },\n    {\n      \"type\": \"EA\"\n    },\n    {\n      \"type\": \"WD\"\n    },\n    {\n      \"type\": \"TX\"\n    },\n    {\n      \"type\": \"CT\"\n    }\n  ]\n}\n'),
   ('CH','{\n  \"page_type\": \"CH\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": false\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"IT\"\n    },\n    {\n      \"type\": \"AS\"\n    },\n    {\n      \"type\": \"EV\"\n    },\n    {\n      \"type\": \"LM\"\n    },\n    {\n      \"type\": \"SA\"\n    },\n    {\n      \"type\": \"RP\"\n    }\n  ]\n}'),
   ('CT','{\n  \"page_type\": \"CT\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": false\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"IT\"\n    }\n  ]\n}'),
   ('DI','{\n  \"page_type\": \"DI\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": true\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"PL\"\n    }\n  ]\n}'),
@@ -294,8 +322,8 @@ LOCK TABLES `page_id_bind` WRITE;
 
 INSERT INTO `page_id_bind` (`page_id`, `bound_id`, `type`, `order`, `disabled`)
 VALUES
-  ('','','',0,0),
   ('AS_oHXxgJw5tv7Ce','CH_Rr4So7SlAXSWm','CH',NULL,0),
+  ('CA_2MLJEe0YuQrLt','CT_1zFVNLfc2SQz5','CT',NULL,0),
   ('CA_2MLJEe0YuQrLt','EA_sKR7yxcVOrKw9','EA',NULL,0),
   ('CA_2MLJEe0YuQrLt','GR_XvIixhu8sHoTc','GR',NULL,0),
   ('CA_2MLJEe0YuQrLt','QU_oec7Hlff7nfVW','QU',0,0),
@@ -303,6 +331,7 @@ VALUES
   ('CA_2MLJEe0YuQrLt','WD_dGdvX9cjgJtd8','WD',0,0),
   ('CH_Rr4So7SlAXSWm','AS_oHXxgJw5tv7Ce','AS',0,0),
   ('CH_Rr4So7SlAXSWm','SA_ZnDpXGyqslbok','SA',0,0),
+  ('CT_1zFVNLfc2SQz5','IT_EYFMYY3gPgkSI','IT',NULL,0),
   ('DI_FOTZYQnlJYk7a','PL_DmUcXuKJYL0iv','PL',0,0),
   ('DI_FOTZYQnlJYk7a','PL_nLIRlYzyUwgoK','PL',0,0),
   ('GR_XvIixhu8sHoTc','AS_oHXxgJw5tv7Ce','AS',NULL,0),
@@ -388,6 +417,7 @@ LOCK TABLES `page_links` WRITE;
 INSERT INTO `page_links` (`page_id`, `type`, `properties`, `order_index`)
 VALUES
   ('AS_oHXxgJw5tv7Ce','CH',NULL,0),
+  ('CA_2MLJEe0YuQrLt','CT',NULL,5),
   ('CA_2MLJEe0YuQrLt','EA',NULL,3),
   ('CA_2MLJEe0YuQrLt','GR',NULL,2),
   ('CA_2MLJEe0YuQrLt','QU',NULL,0),
@@ -399,9 +429,13 @@ VALUES
   ('CH_Rr4So7SlAXSWm','LM',NULL,3),
   ('CH_Rr4So7SlAXSWm','RP',NULL,5),
   ('CH_Rr4So7SlAXSWm','SA',NULL,4),
+  ('CT_1zFVNLfc2SQz5','IT',NULL,0),
   ('DI_FOTZYQnlJYk7a','PL',NULL,0),
   ('EA_sKR7yxcVOrKw9','HI',NULL,0),
   ('GR_XvIixhu8sHoTc','AS',NULL,0),
+  ('IT_EYFMYY3gPgkSI','CA',NULL,0),
+  ('IT_EYFMYY3gPgkSI','EV',NULL,1),
+  ('IT_EYFMYY3gPgkSI','RP',NULL,2),
   ('LM_1m8oSmsEe67gc','SE',NULL,0),
   ('LM_DcFCWmQs3IUKG','SE',NULL,0),
   ('LM_hnNqV1pP6fNVe','SE',NULL,0),
@@ -511,9 +545,11 @@ VALUES
   ('AS_oHXxgJw5tv7Ce','AS','The Negoshas',NULL,NULL),
   ('CA_2MLJEe0YuQrLt','CA','Prophecy of the bloodmoon god','Traveling to a festival, your party\'s destiny is sealed by the prophecy of a fortune teller.  She speaks of a blood stone, four maidens, and a ritual of death and immortality.  Can you stop the red demon before he becomes the bloodmoon god?','[{\"key\":\"Length\",\"value\":\"6-10 3-hour sessions\"},{\"key\":\"Starting level\",\"value\":\"1\"},{\"key\":\"Expected ending level\",\"value\":\"4\"},{\"key\":\"Expected number of players\",\"value\":\"3-6\"}]'),
   ('CH_Rr4So7SlAXSWm','CH','Lady Sharon Negosha',NULL,NULL),
+  ('CT_1zFVNLfc2SQz5','CT','Magical stones',NULL,NULL),
   ('DI_FOTZYQnlJYk7a','DI','Zelorna','A mostly terran kingdom that believes in a strong republic of patriarchal government.  Zelorna is in continual territorial conflict against the Sapphire Vein and the Empire of the Old Kings.','[{\"key\":\"Title\",\"value\":\"The Brotherhood under the Stag Banner\"}]'),
   ('EA_sKR7yxcVOrKw9','EA','Redawn','The current Era in which players usually begin their journey.','[]'),
   ('GR_XvIixhu8sHoTc','GR','Vistani',NULL,NULL),
+  ('IT_EYFMYY3gPgkSI','IT','Bloodmoon stone',NULL,NULL),
   ('LM_1m8oSmsEe67gc','LM','Market circle',NULL,NULL),
   ('LM_DcFCWmQs3IUKG','LM','The Painted Grey Roadhouse',NULL,NULL),
   ('LM_hnNqV1pP6fNVe','LM','Lady Negosha’s Fortune and Folly',NULL,NULL),
@@ -546,3 +582,12 @@ VALUES
 
 /*!40000 ALTER TABLE `page_summary` ENABLE KEYS */;
 UNLOCK TABLES;
+
+
+
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
