@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.18)
 # Database: sr_creation_dev
-# Generation Time: 2017-06-17 22:01:30 +0000
+# Generation Time: 2017-08-13 04:17:27 +0000
 # ************************************************************
 
 
@@ -41,6 +41,75 @@ VALUES
 UNLOCK TABLES;
 
 
+# Dump of table map_highlighted_pin
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `map_highlighted_pin`;
+
+CREATE TABLE `map_highlighted_pin` (
+  `map_id` char(16) NOT NULL,
+  `pin_id` char(16) NOT NULL DEFAULT '',
+  PRIMARY KEY (`map_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+# Dump of table map_images
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `map_images`;
+
+CREATE TABLE `map_images` (
+  `image_id` char(16) NOT NULL,
+  `name` varchar(140) DEFAULT NULL,
+  `caption` varchar(300) DEFAULT NULL,
+  `link` varchar(2500) DEFAULT NULL,
+  `thumbnail_link` varchar(2500) DEFAULT NULL,
+  `source` varchar(2500) DEFAULT NULL,
+  PRIMARY KEY (`image_id`),
+  KEY `name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+# Dump of table map_pins
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `map_pins`;
+
+CREATE TABLE `map_pins` (
+  `pin_id` char(16) NOT NULL DEFAULT '',
+  `map_id` char(16) NOT NULL,
+  `page_id` char(16) NOT NULL,
+  `title` varchar(140) DEFAULT '',
+  `tooltip` varchar(300) DEFAULT NULL,
+  `icon` varchar(50) DEFAULT NULL,
+  `coordinates_x` int(11) DEFAULT NULL,
+  `coordinates_y` int(11) DEFAULT NULL,
+  PRIMARY KEY (`pin_id`),
+  KEY `map_id` (`map_id`),
+  KEY `title` (`title`),
+  KEY `page_id` (`page_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+# Dump of table maps
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `maps`;
+
+CREATE TABLE `maps` (
+  `map_id` char(16) NOT NULL DEFAULT '',
+  `name` varchar(140) DEFAULT '',
+  `properties` varchar(5000) DEFAULT NULL,
+  `text` varchar(300) DEFAULT NULL,
+  PRIMARY KEY (`map_id`),
+  KEY `name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
 # Dump of table page_auth
 # ------------------------------------------------------------
 
@@ -70,7 +139,6 @@ VALUES
   ('AS_oHXxgJw5tv7Ce','US_1234567890123',1,1,1,1,0),
   ('CA_2MLJEe0YuQrLt','US_1234567890123',1,1,1,1,0),
   ('CH_Rr4So7SlAXSWm','US_1234567890123',1,1,1,1,0),
-  ('CT_1zFVNLfc2SQz5','US_1234567890123',1,1,1,1,0),
   ('DI_FOTZYQnlJYk7a','US_1234567890123',1,1,1,1,0),
   ('EA_sKR7yxcVOrKw9','US_1234567890123',1,1,1,1,0),
   ('GR_XvIixhu8sHoTc','US_1234567890123',1,1,1,1,0),
@@ -103,6 +171,7 @@ VALUES
   ('SA_rBGQ4fh7hkXvd','US_1234567890123',1,1,1,1,0),
   ('SA_ZnDpXGyqslbok','US_1234567890123',1,1,1,1,0),
   ('SP_hrjiECJmR7rwV','US_1234567890123',1,1,1,1,0),
+  ('ST_1zFVNLfc2SQz5','US_1234567890123',1,1,1,1,0),
   ('TX_O7iDhPul9gPMH','US_1234567890123',1,1,1,1,0),
   ('WD_dGdvX9cjgJtd8','US_1234567890123',1,1,1,1,0);
 
@@ -131,14 +200,13 @@ INSERT INTO `page_content` (`page_id`, `type`, `properties`, `disabled`)
 VALUES
   ('AS_oHXxgJw5tv7Ce','DE',NULL,0),
   ('AS_oHXxgJw5tv7Ce','IM',NULL,1),
-  ('CA_2MLJEe0YuQrLt','DE',NULL,1),
+  ('CA_2MLJEe0YuQrLt','DE',NULL,0),
   ('CA_2MLJEe0YuQrLt','IM',NULL,1),
   ('CH_Rr4So7SlAXSWm','DE',NULL,0),
-  ('CH_Rr4So7SlAXSWm','IM',NULL,0),
-  ('CT_1zFVNLfc2SQz5','DE',NULL,0),
-  ('CT_1zFVNLfc2SQz5','IM',NULL,0),
+  ('CH_Rr4So7SlAXSWm','IM',NULL,1),
   ('DI_FOTZYQnlJYk7a','DE',NULL,0),
   ('DI_FOTZYQnlJYk7a','IM',NULL,1),
+  ('DI_FOTZYQnlJYk7a','MP',NULL,2),
   ('EA_sKR7yxcVOrKw9','DE',NULL,0),
   ('EA_sKR7yxcVOrKw9','IM',NULL,1),
   ('GR_XvIixhu8sHoTc','DE',NULL,0),
@@ -146,65 +214,75 @@ VALUES
   ('IT_EYFMYY3gPgkSI','DE',NULL,0),
   ('IT_EYFMYY3gPgkSI','IM',NULL,0),
   ('LM_1m8oSmsEe67gc','DE',NULL,0),
-  ('LM_1m8oSmsEe67gc','IM',NULL,0),
+  ('LM_1m8oSmsEe67gc','IM',NULL,1),
+  ('LM_1m8oSmsEe67gc','MP',NULL,2),
   ('LM_DcFCWmQs3IUKG','DE',NULL,0),
-  ('LM_DcFCWmQs3IUKG','IM',NULL,0),
+  ('LM_DcFCWmQs3IUKG','IM',NULL,1),
+  ('LM_DcFCWmQs3IUKG','MP',NULL,2),
   ('LM_hnNqV1pP6fNVe','DE',NULL,0),
-  ('LM_hnNqV1pP6fNVe','IM',NULL,0),
+  ('LM_hnNqV1pP6fNVe','IM',NULL,1),
+  ('LM_hnNqV1pP6fNVe','MP',NULL,2),
   ('LM_tOoMUA1HsFqfJ','DE',NULL,0),
-  ('LM_tOoMUA1HsFqfJ','IM',NULL,0),
+  ('LM_tOoMUA1HsFqfJ','IM',NULL,1),
+  ('LM_tOoMUA1HsFqfJ','MP',NULL,2),
   ('PL_DmUcXuKJYL0iv','DE',NULL,0),
-  ('PL_DmUcXuKJYL0iv','IM',NULL,0),
+  ('PL_DmUcXuKJYL0iv','IM',NULL,1),
+  ('PL_DmUcXuKJYL0iv','MP',NULL,2),
   ('PL_nLIRlYzyUwgoK','DE',NULL,0),
-  ('PL_nLIRlYzyUwgoK','IM',NULL,0),
-  ('QU_oec7Hlff7nfVW','DE',NULL,1),
+  ('PL_nLIRlYzyUwgoK','IM',NULL,1),
+  ('PL_nLIRlYzyUwgoK','MP',NULL,2),
+  ('QU_oec7Hlff7nfVW','DE',NULL,0),
   ('QU_oec7Hlff7nfVW','IM',NULL,1),
   ('RA_1pSMGlktvovHL','DE',NULL,0),
-  ('RA_1pSMGlktvovHL','IM',NULL,0),
+  ('RA_1pSMGlktvovHL','IM',NULL,1),
   ('RA_53tmPY6F55P0z','DE',NULL,0),
-  ('RA_53tmPY6F55P0z','IM',NULL,0),
+  ('RA_53tmPY6F55P0z','IM',NULL,1),
   ('RA_afaBbxIA91CXO','DE',NULL,0),
-  ('RA_afaBbxIA91CXO','IM',NULL,0),
+  ('RA_afaBbxIA91CXO','IM',NULL,1),
   ('RA_cbECdPIKDaD3d','DE',NULL,0),
-  ('RA_cbECdPIKDaD3d','IM',NULL,0),
+  ('RA_cbECdPIKDaD3d','IM',NULL,1),
   ('RA_CFP5Aud1sJ3I0','DE',NULL,0),
-  ('RA_CFP5Aud1sJ3I0','IM',NULL,0),
+  ('RA_CFP5Aud1sJ3I0','IM',NULL,1),
   ('RA_czbTv5SwJC49W','DE',NULL,0),
-  ('RA_czbTv5SwJC49W','IM',NULL,0),
+  ('RA_czbTv5SwJC49W','IM',NULL,1),
   ('RA_driIEa5MTQLnO','DE',NULL,0),
-  ('RA_driIEa5MTQLnO','IM',NULL,0),
+  ('RA_driIEa5MTQLnO','IM',NULL,1),
   ('RA_e7qoKvjbPLnTK','DE',NULL,0),
-  ('RA_e7qoKvjbPLnTK','IM',NULL,0),
+  ('RA_e7qoKvjbPLnTK','IM',NULL,1),
   ('RA_HKVAhd2lDGPmv','DE',NULL,0),
-  ('RA_HKVAhd2lDGPmv','IM',NULL,0),
+  ('RA_HKVAhd2lDGPmv','IM',NULL,1),
   ('RA_iEJHX5cZCzh13','DE',NULL,0),
-  ('RA_iEJHX5cZCzh13','IM',NULL,0),
+  ('RA_iEJHX5cZCzh13','IM',NULL,1),
   ('RA_KzHFz5vcFliIw','DE',NULL,0),
-  ('RA_KzHFz5vcFliIw','IM',NULL,0),
+  ('RA_KzHFz5vcFliIw','IM',NULL,1),
   ('RA_MNNMA5YbwQkjw','DE',NULL,0),
-  ('RA_MNNMA5YbwQkjw','IM',NULL,0),
+  ('RA_MNNMA5YbwQkjw','IM',NULL,1),
   ('RA_NFK7eJJHm4xzi','DE',NULL,0),
-  ('RA_NFK7eJJHm4xzi','IM',NULL,0),
+  ('RA_NFK7eJJHm4xzi','IM',NULL,1),
   ('RA_pNj1MxpKSRg9Q','DE',NULL,0),
-  ('RA_pNj1MxpKSRg9Q','IM',NULL,0),
+  ('RA_pNj1MxpKSRg9Q','IM',NULL,1),
   ('RA_xBgmBkN6EpiT8','DE',NULL,0),
-  ('RA_xBgmBkN6EpiT8','IM',NULL,0),
+  ('RA_xBgmBkN6EpiT8','IM',NULL,1),
   ('RA_xMgKSSMRf29sz','DE',NULL,0),
-  ('RA_xMgKSSMRf29sz','IM',NULL,0),
+  ('RA_xMgKSSMRf29sz','IM',NULL,1),
   ('RG_sxEJUtzFuhYPP','DE',NULL,0),
   ('RG_sxEJUtzFuhYPP','IM',NULL,1),
-  ('RR_1234567890123','DE','',1),
+  ('RG_sxEJUtzFuhYPP','MP',NULL,2),
+  ('RR_1234567890123','DE','',0),
   ('RR_1234567890123','IM','',1),
   ('SA_rBGQ4fh7hkXvd','DE',NULL,0),
-  ('SA_rBGQ4fh7hkXvd','IM',NULL,0),
+  ('SA_rBGQ4fh7hkXvd','IM',NULL,1),
   ('SA_ZnDpXGyqslbok','DE',NULL,0),
-  ('SA_ZnDpXGyqslbok','IM',NULL,0),
+  ('SA_ZnDpXGyqslbok','IM',NULL,1),
   ('SP_hrjiECJmR7rwV','DE',NULL,0),
-  ('SP_hrjiECJmR7rwV','IM',NULL,0),
+  ('SP_hrjiECJmR7rwV','IM',NULL,1),
+  ('ST_1zFVNLfc2SQz5','DE',NULL,0),
+  ('ST_1zFVNLfc2SQz5','IM',NULL,1),
   ('TX_O7iDhPul9gPMH','DE',NULL,0),
   ('TX_O7iDhPul9gPMH','IM',NULL,1),
   ('WD_dGdvX9cjgJtd8','DE',NULL,0),
-  ('WD_dGdvX9cjgJtd8','IM',NULL,1);
+  ('WD_dGdvX9cjgJtd8','IM',NULL,1),
+  ('WD_dGdvX9cjgJtd8','MP',NULL,2);
 
 /*!40000 ALTER TABLE `page_content` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -226,29 +304,29 @@ LOCK TABLES `page_defaults` WRITE;
 
 INSERT INTO `page_defaults` (`type`, `default_config`)
 VALUES
-  ('AS','{\n  \"page_type\": \"AS\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": true\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"CH\"\n    }\n  ]\n}'),
-  ('CA','{\n  \"page_type\": \"CA\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": true\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"QU\"\n    },\n    {\n      \"type\": \"GR\"\n    },\n    {\n      \"type\": \"EA\"\n    },\n    {\n      \"type\": \"WD\"\n    },\n    {\n      \"type\": \"TX\"\n    },\n    {\n      \"type\": \"CT\"\n    }\n  ]\n}\n'),
-  ('CH','{\n  \"page_type\": \"CH\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": false\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"IT\"\n    },\n    {\n      \"type\": \"AS\"\n    },\n    {\n      \"type\": \"EV\"\n    },\n    {\n      \"type\": \"LM\"\n    },\n    {\n      \"type\": \"SA\"\n    },\n    {\n      \"type\": \"RP\"\n    }\n  ]\n}'),
-  ('CT','{\n  \"page_type\": \"CT\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": false\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"IT\"\n    }\n  ]\n}'),
-  ('DI','{\n  \"page_type\": \"DI\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": true\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"PL\"\n    }\n  ]\n}'),
-  ('EA','{\n  \"page_type\": \"EA\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": true\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"HI\"\n    }\n  ]\n}'),
-  ('EV','{\n  \"page_type\": \"EV\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": false\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"SA\"\n    },\n    {\n      \"type\": \"CH\"\n    },\n    {\n      \"type\": \"IT\"\n    },\n    {\n      \"type\": \"RP\"\n    }\n  ]\n}'),
-  ('GR','{\n  \"page_type\": \"GR\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": true\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"AS\"\n    }\n  ]\n}'),
-  ('HI','{\n  \"page_type\": \"HI\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": true\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"EV\"\n    }\n  ]\n}'),
-  ('IT','{\n  \"page_type\": \"IT\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": false\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"CA\"\n    },\n    {\n      \"type\": \"EV\"\n    },\n    {\n      \"type\": \"RP\"\n    }\n  ]\n}'),
-  ('LM','{\n  \"page_type\": \"LM\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": false\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"SE\"\n    }\n  ]\n}'),
-  ('LR','{\n  \"page_type\": \"LR\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": false\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"RP\"\n    }\n  ]\n}'),
-  ('PL','{\n  \"page_type\": \"PL\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": false\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"LM\"\n    }\n  ]\n}\n'),
-  ('QU','{\n  \"page_type\": \"QU\",\n  \"summary\": {\n    \"properties\": {\n      \"provider\": \"\"\n    }\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": true\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"SA\"\n    }\n  ]\n}'),
-  ('RA','{\n  \"page_type\": \"RA\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": false\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"CH\"\n    },\n    {\n      \"type\": \"HI\"\n    },\n    {\n      \"type\": \"LR\"\n    }\n  ]\n}\n'),
-  ('RG','{\n  \"page_type\": \"RG\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": true\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"DI\"\n    }\n  ]\n}\n'),
-  ('RP','{\n  \"page_type\": \"SE\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": true\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"CA\"\n    },\n    {\n      \"type\": \"IT\"\n    }\n  ]\n}\n'),
-  ('RR','{\n  \"page_type\": \"RR\",\n  \"summary\": {\n    \"hidden\": true,\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": true\n  },\n  \"images\": {\n    \"hidden\": true\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"CA\"\n    }\n  ]\n}'),
-  ('SA','{\n  \"page_type\": \"SA\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": false\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"PL\"\n    },\n    {\n      \"type\": \"RP\"\n    },\n    {\n      \"type\": \"CH\"\n    }\n  ]\n}'),
-  ('SE','{\n  \"page_type\": \"SE\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": false\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"CA\"\n    },\n    {\n      \"type\": \"IT\"\n    }\n  ]\n}\n'),
-  ('SP','{\n  \"page_type\": \"SP\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": false\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"RA\"\n    },\n    {\n      \"type\": \"CH\"\n    }\n  ]\n}\n'),
-  ('TX','{\n  \"page_type\": \"TX\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": true\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"SP\"\n    }\n  ]\n}\n'),
-  ('WD','{\n  \"page_type\": \"WD\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": true\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"RG\"\n    }\n  ]\n}\n');
+  ('AS','{\n  \"page_name\": \"association\",\n  \"page_type\": \"AS\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": true\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"CH\"\n    }\n  ]\n}'),
+  ('CA','{\n  \"page_name\": \"campaign\",\n  \"page_type\": \"CA\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": true\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"QU\"\n    },\n    {\n      \"type\": \"GR\"\n    },\n    {\n      \"type\": \"EA\"\n    },\n    {\n      \"type\": \"WD\"\n    },\n    {\n      \"type\": \"TX\"\n    },\n    {\n      \"type\": \"ST\"\n    }\n  ]\n}\n'),
+  ('CH','{\n  \"page_name\": \"character\",\n  \"page_type\": \"CH\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": false\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"IT\"\n    },\n    {\n      \"type\": \"AS\"\n    },\n    {\n      \"type\": \"EV\"\n    },\n    {\n      \"type\": \"LM\"\n    },\n    {\n      \"type\": \"SA\"\n    },\n    {\n      \"type\": \"RP\"\n    }\n  ]\n}'),
+  ('DI','{\n  \"page_name\": \"district\",\n  \"page_type\": \"DI\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": true\n  },\n  \"maps\": {\n    \"hidden\": false\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"PL\"\n    }\n  ]\n}'),
+  ('EA','{\n  \"page_name\": \"era\",\n  \"page_type\": \"EA\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": true\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"HI\"\n    }\n  ]\n}'),
+  ('EV','{\n  \"page_name\": \"event\",\n  \"page_type\": \"EV\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": false\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"SA\"\n    },\n    {\n      \"type\": \"CH\"\n    },\n    {\n      \"type\": \"IT\"\n    },\n    {\n      \"type\": \"RP\"\n    }\n  ]\n}'),
+  ('GR','{\n  \"page_name\": \"group\",\n  \"page_type\": \"GR\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": true\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"AS\"\n    }\n  ]\n}'),
+  ('HI','{\n  \"page_name\": \"history\",\n  \"page_type\": \"HI\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": true\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"EV\"\n    }\n  ]\n}'),
+  ('IT','{\n  \"page_name\": \"item\",\n  \"page_type\": \"IT\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": false\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"CA\"\n    },\n    {\n      \"type\": \"EV\"\n    },\n    {\n      \"type\": \"RP\"\n    }\n  ]\n}'),
+  ('LM','{\n  \"page_name\": \"landmark\",\n  \"page_type\": \"LM\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": false\n  },\n  \"maps\": {\n    \"hidden\": false\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"SE\"\n    }\n  ]\n}'),
+  ('LR','{\n  \"page_name\": \"lore\",\n  \"page_type\": \"LR\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": false\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"RP\"\n    }\n  ]\n}'),
+  ('PL','{\n  \"page_name\": \"place\",\n  \"page_type\": \"PL\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": false\n  },\n  \"maps\": {\n    \"hidden\": false\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"LM\"\n    }\n  ]\n}\n'),
+  ('QU','{\n  \"page_name\": \"quest\",\n  \"page_type\": \"QU\",\n  \"summary\": {\n    \"properties\": {\n      \"provider\": \"\"\n    }\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": true\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"SA\"\n    }\n  ]\n}'),
+  ('RA','{\n  \"page_name\": \"race\",\n  \"page_type\": \"RA\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": false\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"CH\"\n    },\n    {\n      \"type\": \"HI\"\n    },\n    {\n      \"type\": \"LR\"\n    }\n  ]\n}\n'),
+  ('RG','{\n  \"page_name\": \"region\",\n  \"page_type\": \"RG\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": true\n  },\n  \"maps\": {\n    \"hidden\": false\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"DI\"\n    }\n  ]\n}\n'),
+  ('RP','{\n  \"page_name\": \"report\",\n  \"page_type\": \"RP\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": true\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"CA\"\n    },\n    {\n      \"type\": \"IT\"\n    }\n  ]\n}\n'),
+  ('RR','{\n  \"page_name\": \"root\",\n  \"page_type\": \"RR\",\n  \"summary\": {\n    \"hidden\": true,\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": true\n  },\n  \"images\": {\n    \"hidden\": true\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"CA\"\n    }\n  ]\n}'),
+  ('SA','{\n  \"page_name\": \"story arc\",\n  \"page_type\": \"SA\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": false\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"PL\"\n    },\n    {\n      \"type\": \"RP\"\n    },\n    {\n      \"type\": \"CH\"\n    }\n  ]\n}'),
+  ('SE','{\n  \"page_name\": \"section\",\n  \"page_type\": \"SE\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": false\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"CA\"\n    },\n    {\n      \"type\": \"IT\"\n    }\n  ]\n}\n'),
+  ('SP','{\n  \"page_name\": \"species\",\n  \"page_type\": \"SP\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": false\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"RA\"\n    },\n    {\n      \"type\": \"CH\"\n    }\n  ]\n}\n'),
+  ('ST','{\n  \"page_name\": \"sets\",\n  \"page_type\": \"ST\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": false\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"IT\"\n    }\n  ]\n}'),
+  ('TX','{\n  \"page_name\": \"taxon\",\n  \"page_type\": \"TX\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": true\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"SP\"\n    }\n  ]\n}\n'),
+  ('WD','{\n  \"page_name\": \"world\",\n  \"page_type\": \"WD\",\n  \"summary\": {\n    \"properties\": {}\n  },\n  \"details\": {\n    \"hidden\": false\n  },\n  \"images\": {\n    \"hidden\": true\n  },\n  \"maps\": {\n    \"hidden\": false\n  },\n  \"specials\": [],\n  \"pages\": [\n    {\n      \"type\": \"RG\"\n    }\n  ]\n}\n');
 
 /*!40000 ALTER TABLE `page_defaults` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -331,7 +409,6 @@ VALUES
   ('CA_2MLJEe0YuQrLt','WD_dGdvX9cjgJtd8','WD',0,0),
   ('CH_Rr4So7SlAXSWm','AS_oHXxgJw5tv7Ce','AS',0,0),
   ('CH_Rr4So7SlAXSWm','SA_ZnDpXGyqslbok','SA',0,0),
-  ('CT_1zFVNLfc2SQz5','IT_EYFMYY3gPgkSI','IT',NULL,0),
   ('DI_FOTZYQnlJYk7a','PL_DmUcXuKJYL0iv','PL',0,0),
   ('DI_FOTZYQnlJYk7a','PL_nLIRlYzyUwgoK','PL',0,0),
   ('GR_XvIixhu8sHoTc','AS_oHXxgJw5tv7Ce','AS',NULL,0),
@@ -365,6 +442,7 @@ VALUES
   ('SP_hrjiECJmR7rwV','RA_pNj1MxpKSRg9Q','RA',NULL,0),
   ('SP_hrjiECJmR7rwV','RA_xBgmBkN6EpiT8','RA',NULL,0),
   ('SP_hrjiECJmR7rwV','RA_xMgKSSMRf29sz','RA',NULL,0),
+  ('ST_1zFVNLfc2SQz5','IT_EYFMYY3gPgkSI','IT',NULL,0),
   ('TX_O7iDhPul9gPMH','SP_hrjiECJmR7rwV','SP',NULL,0),
   ('WD_dGdvX9cjgJtd8','RG_sxEJUtzFuhYPP','RG',0,0);
 
@@ -429,7 +507,6 @@ VALUES
   ('CH_Rr4So7SlAXSWm','LM',NULL,3),
   ('CH_Rr4So7SlAXSWm','RP',NULL,5),
   ('CH_Rr4So7SlAXSWm','SA',NULL,4),
-  ('CT_1zFVNLfc2SQz5','IT',NULL,0),
   ('DI_FOTZYQnlJYk7a','PL',NULL,0),
   ('EA_sKR7yxcVOrKw9','HI',NULL,0),
   ('GR_XvIixhu8sHoTc','AS',NULL,0),
@@ -501,6 +578,7 @@ VALUES
   ('SA_ZnDpXGyqslbok','RP',NULL,2),
   ('SP_hrjiECJmR7rwV','CH',NULL,1),
   ('SP_hrjiECJmR7rwV','RA',NULL,0),
+  ('ST_1zFVNLfc2SQz5','IT',NULL,0),
   ('TX_O7iDhPul9gPMH','SP',NULL,0),
   ('WD_dGdvX9cjgJtd8','RG',NULL,0);
 
