@@ -94,12 +94,12 @@ CREATE TABLE `map_pins` (
 
 
 
-# Dump of table maps
+# Dump of table page_maps
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `maps`;
+DROP TABLE IF EXISTS `page_maps`;
 
-CREATE TABLE `maps` (
+CREATE TABLE `page_maps` (
   `map_id` char(16) NOT NULL DEFAULT '',
   `name` varchar(140) DEFAULT '',
   `properties` varchar(5000) DEFAULT NULL,
